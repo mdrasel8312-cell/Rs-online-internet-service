@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RS Online Internet Service Provider — হাই-স্পিড ব্রডব্যান্ড</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #070d19;
+      --bg-card: #0e1a2f;
+      --bg-elevated: #142440;
+      --royal-blue: #1d4ed8;
+      --royal-glow: #3b82f6;
+      --gold: #f5b82e;
+      --gold-bright: #ffd35c;
+      --silver: #cbd5e1;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(148, 163, 184, 0.18);
+      --success: #10b981;
+      --shadow-3d: 0 16px 32px -12px rgba(2, 6, 23, 0.78), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(29, 78, 216, 0.22), transparent 42%),
+        radial-gradient(circle at 85% 15%, rgba(245, 184, 46, 0.14), transparent 38%),
+        var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(7, 13, 25, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #2563eb, #0f172a);
+      border: 1px solid rgba(245, 184, 46, 0.55);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--gold-bright);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.1rem;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--silver);
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-bright);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-family: inherit;
+      font-size: 0.94rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.16s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: #ffffff;
+      border: 1px solid rgba(147, 197, 253, 0.35);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-bright), #d97706);
+      color: #091120;
+    }
+
+    .btn-outline {
+      background: rgba(20, 36, 64, 0.75);
+      color: var(--silver);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 16px 18px;
+      background: #0a1324;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: var(--silver);
+      text-decoration: none;
+      padding: 7px 4px;
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 36px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(245, 184, 46, 0.14);
+      border: 1px solid rgba(245, 184, 46, 0.35);
+      color: var(--gold-bright);
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.85rem, 3.6vw, 2.75rem);
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat-box {
+      background: linear-gradient(160deg, rgba(20, 36, 64, 0.9), rgba(11, 21, 39, 0.95));
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: var(--shadow-3d);
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--gold-bright);
+    }
+
+    .stat-box span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card,
+    .panel,
+    .coverage-box {
+      background: linear-gradient(165deg, var(--bg-elevated), var(--bg-card));
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow-3d);
+    }
+
+    .hero-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 10px;
+      color: var(--gold-bright);
+    }
+
+    .pay-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(7, 13, 25, 0.72);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+
+    .pay-row small {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+    }
+
+    .pay-row strong {
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    .copy-btn {
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 8px;
+      padding: 6px 11px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 32px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 660px;
+      margin: 0 auto 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 16px;
+    }
+
+    .pkg-card {
+      background: linear-gradient(165deg, var(--bg-elevated), var(--bg-card));
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 20px 18px;
+      box-shadow: var(--shadow-3d);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pkg-card.featured {
+      border: 1.5px solid rgba(245, 184, 46, 0.75);
+      background: linear-gradient(165deg, #1d2f54, #0d1930);
+    }
+
+    .turbo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #f59e0b, #fde047);
+      color: #091120;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .pkg-speed {
+      font-size: 1.48rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .pkg-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+      margin-bottom: 12px;
+    }
+
+    .pkg-price span {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .pkg-features {
+      list-style: none;
+      margin-bottom: 16px;
+      display: grid;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--silver);
+    }
+
+    .pkg-features li::before {
+      content: "✓ ";
+      color: var(--success);
+      font-weight: 800;
+    }
+
+    .area-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .area-tag {
+      background: rgba(37, 99, 235, 0.16);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      color: #e2e8f0;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--silver);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(7, 13, 25, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: 11px;
+      padding: 10px 12px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.94rem;
+    }
+
+    .ticket-banner {
+      display: none;
+      margin-top: 12px;
+      padding: 11px 13px;
+      border-radius: 11px;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #a7f3d0;
+      font-size: 0.9rem;
+    }
+
+    .chat-box {
+      display: flex;
+      flex-direction: column;
+      height: 310px;
+      background: rgba(7, 13, 25, 0.78);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 12px;
+      overflow-y: auto;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .msg {
+      max-width: 85%;
+      padding: 9px 12px;
+      border-radius: 13px;
+      font-size: 0.9rem;
+      white-space: pre-line;
+    }
+
+    .msg.rs {
+      align-self: flex-start;
+      background: rgba(37, 99, 235, 0.24);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+    }
+
+    .msg.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--gold-bright), #d97706);
+      color: #091120;
+      font-weight: 600;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-input-row input {
+      flex: 1;
+      background: rgba(7, 13, 25, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: 11px;
+      padding: 10px 12px;
+      color: #ffffff;
+      font-family: inherit;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      z-index: 1200;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 460px;
+      background: linear-gradient(165deg, #162849, #0b1426);
+      border: 1px solid rgba(245, 184, 46, 0.45);
+      border-radius: 20px;
+      padding: 20px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      font-size: 1.05rem;
+      cursor: pointer;
+    }
+
+    .selected-pkg-summary {
+      background: rgba(7, 13, 25, 0.72);
+      border: 1px solid rgba(245, 184, 46, 0.35);
+      border-radius: 12px;
+      padding: 11px 13px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 22px 0;
+      margin-top: 16px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: #0f172a;
+      color: #ffffff;
+      border: 1px solid var(--gold-bright);
+      padding: 9px 16px;
+      border-radius: 11px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      z-index: 1500;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-badge">RS</div>
+        <div class="brand-text">
+          <strong>RS Online Internet</strong>
+          <span>বন্দর, চট্টগ্রাম • ৩৮ নং ওয়ার্ড</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#packages">প্যাকেজসমূহ</a></li>
+        <li><a href="#coverage">কভারেজ এলাকা</a></li>
+        <li><a href="#support">অভিযোগ ও RS চ্যাট</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="tel:01933562390" class="btn btn-outline">📞 01933562390</a>
+        <button type="button" class="btn btn-gold" onclick="openOrderModal('৫০ Mbps', '৳৯৫০')">সংযোগ নিন</button>
+      </div>
+
+      <button type="button" class="menu-toggle" aria-label="মেনু" onclick="toggleMobileMenu()">☰</button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#packages" onclick="closeMobileMenu()">প্যাকেজসমূহ</a>
+      <a href="#coverage" onclick="closeMobileMenu()">কভারেজ এলাকা</a>
+      <a href="#support" onclick="closeMobileMenu()">অভিযোগ ও RS চ্যাট</a>
+      <a href="tel:01933562390" onclick="closeMobileMenu()">হেল্পলাইন: 01933562390</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="pill">⚡ সুপার-ফাস্ট ফাইবার ও Wi-Fi সাপোর্ট</div>
+        <h1>RS Online Internet Service Provider</h1>
+        <p>
+          বন্দর এলাকা ও ৩৮ নং ওয়ার্ডে নিরবচ্ছিন্ন ফাইবার ইন্টারনেট ও রাউটার/Wi-Fi সংযোগ সাপোর্ট।
+          বাড়ি, অফিস, গেমিং ও স্ট্রিমিংয়ের জন্য স্থিতিশীল স্পিড।
+        </p>
+
+        <div class="hero-cta">
+          <a href="#packages" class="btn btn-gold">প্যাকেজ দেখুন</a>
+          <a href="https://api.whatsapp.com/send?phone=8801759887499" target="_blank" rel="noopener" class="btn btn-primary">
+            WhatsApp-এ যোগাযোগ
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-box">
+            <strong>২০ – 100Mbps</strong>
+            <span>৭টি সাশ্রয়ী প্যাকেজ</span>
+          </div>
+          <div class="stat-box">
+            <strong>২৪/৭ সাপোর্ট</strong>
+            <span>Wi-Fi ও লাইন সাপোর্ট</span>
+          </div>
+          <div class="stat-box">
+            <strong>বন্দর • ৩৮ নং</strong>
+            <span>ফাইবার কভারেজ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>পেমেন্ট ও যোগাযোগ নম্বর</h3>
+
+        <div class="pay-row">
+          <div>
+            <small>বিকাশ / WhatsApp নম্বর</small>
+            <strong>01759887499</strong>
+          </div>
+          <button type="button" class="copy-btn" onclick="copyText('01759887499', 'বিকাশ নম্বর কপি হয়েছে')">কপি</button>
+        </div>
+
+        <div class="pay-row">
+          <div>
+            <small>নগদ নম্বর</small>
+            <strong>01869466643</strong>
+          </div>
+          <button type="button" class="copy-btn" onclick="copyText('01869466643', 'নগদ নম্বর কপি হয়েছে')">কপি</button>
+        </div>
+
+        <div class="pay-row">
+          <div>
+            <small>কাস্টমার কেয়ার ও টেলিফোন</small>
+            <strong>01933562390</strong>
+          </div>
+          <a href="tel:01933562390" class="copy-btn">কল</a>
+        </div>
+
+        <p style="font-size: 0.84rem; color: var(--text-muted);">
+          টেলিফোন: <strong>09697203499</strong> এবং <strong>09658670149</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="container">
+      <div class="section-head">
+        <h2>আমাদের ব্রডব্যান্ড প্যাকেজসমূহ</h2>
+        <p>পছন্দের প্যাকেজ বেছে নিয়ে বিকাশ বা নগদ পেমেন্টের তথ্যসহ সংযোগের অর্ডার পাঠান।</p>
+      </div>
+
+      <div class="packages-grid">
+        <article class="pkg-card">
+          <div>
+            <div class="pkg-speed">২০ Mbps</div>
+            <div class="pkg-price">৳৬০০ <span>/ মাস</span></div>
+            <ul class="pkg-features">
+              <li>আনলিমিটেড ব্রাউজিং ও সোশ্যাল মিডিয়া</li>
+              <li>HD ভিডিও স্ট্রিমিং ও Wi-Fi সাপোর্ট</li>
+              <li>২৪/৭ কাস্টমার সাপোর্ট</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="openOrderModal('২০ Mbps', '৳৬০০')">সংযোগ নিতে চ্যাট করুন</button>
+        </article>
+
+        <article class="pkg-card">
+          <div>
+            <div class="pkg-speed">৩০ Mbps</div>
+            <div class="pkg-price">৳৭০০ <span>/ মাস</span></div>
+            <ul class="pkg-features">
+              <li>আনলিমিটেড ডাটা ব্যবহার</li>
+              <li>স্মুথ YouTube ও Facebook</li>
+              <li>দ্রুত লোকাল সার্ভার সংযোগ</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="openOrderModal('৩০ Mbps', '৳৭০০')">সংযোগ নিতে চ্যাট করুন</button>
+        </article>
+
+        <article class="pkg-card">
+          <div>
+            <div class="pkg-speed">৪০ Mbps</div>
+            <div class="pkg-price">৳৮০০ <span>/ মাস</span></div>
+            <ul class="pkg-features">
+              <li>ফ্যামিলি ও ওয়ার্ক-ফ্রম-হোম উপযোগী</li>
+              <li>ব্যাফার ফ্রি 1080p স্ট্রিমিং</li>
+              <li>দ্রুত রেসপন্স ও সাপোর্ট</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="openOrderModal('৪০ Mbps', '৳৮০০')">সংযোগ নিতে চ্যাট করুন</button>
+        </article>
+
+        <article class="pkg-card">
+          <div>
+            <div class="pkg-speed">৫০ Mbps</div>
+            <div class="pkg-price">৳৯৫০ <span>/ মাস</span></div>
+            <ul class="pkg-features">
+              <li>মাল্টি-ডিভাইস হাই-স্পিড পারফরম্যান্স</li>
+              <li>লো-ল্যাটেন্সি অনলাইন গেমিং</li>
+              <li>অগ্রাধিকার ভিত্তিক সাপোর্ট</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="openOrderModal('৫০ Mbps', '৳৯৫০')">সংযোগ নিতে চ্যাট করুন</button>
+        </article>
+
+        <article class="pkg-card">
+          <div>
+            <div class="pkg-speed">৬০ Mbps</div>
+            <div class="pkg-price">৳১০৫০ <span>/ মাস</span></div>
+            <ul class="pkg-features">
+              <li>হেভি ডাউনলোড ও আপলোড সুবিধা</li>
+              <li>4K স্ট্রিমিং ও ক্লাউড ব্যাকআপ</li>
+              <li>স্থিতিশীল ফাইবার সংযোগ</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="openOrderModal('৬০ Mbps', '৳১০৫০')">সংযোগ নিতে চ্যাট করুন</button>
+        </article>
+
+        <article class="pkg-card">
+          <div>
+            <div class="pkg-speed">৭০ Mbps</div>
+            <div class="pkg-price">৳১১৫০ <span>/ মাস</span></div>
+            <ul class="pkg-features">
+              <li>পাওয়ার ইউজার ও ছোট অফিসের জন্য আদর্শ</li>
+              <li>দ্রুত ফাইল শেয়ারিং ও লাইভ স্ট্রিম</li>
+              <li>২৪/৭ টেকনিক্যাল মনিটরিং</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="openOrderModal('৭০ Mbps', '৳১১৫০')">সংযোগ নিতে চ্যাট করুন</button>
+        </article>
+
+        <article class="pkg-card featured">
+          <div>
+            <div class="turbo-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M13 2L4 14H11L10 22L20 10H13L13 2Z" fill="#091120" stroke="#091120" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+              সুপার ফাস্ট • হাই স্পিড
+            </div>
+            <div class="pkg-speed">100Mbps</div>
+            <div class="pkg-price">৳১২৫০ <span>/ মাস</span></div>
+            <ul class="pkg-features">
+              <li><strong>আনলিমিটেড ১ জিবি (1Gbps) ডাটা ট্রান্সফার</strong></li>
+              <li>আল্ট্রা-ফাস্ট স্পিড ও লো-পিং</li>
+              <li>ভিআইপি সাপোর্ট ও দ্রুত সংযোগ</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-gold" onclick="openOrderModal('100Mbps', '৳১২৫০')">সংযোগ নিতে চ্যাট করুন</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage">
+    <div class="container">
+      <div class="coverage-box">
+        <h2>কভারেজ এলাকা — বন্দর এলাকা, চট্টগ্রাম ও ৩৮ নং ওয়ার্ড</h2>
+        <p style="color: var(--text-muted); margin-top: 4px;">
+          নিচের এলাকাগুলোতে আমাদের ফাইবার ও Wi-Fi সাপোর্ট সক্রিয় রয়েছে:
+        </p>
+
+        <div class="area-tags">
+          <span class="area-tag">বন্দর এলাকা, চট্টগ্রাম</span>
+          <span class="area-tag">৩৮ নং ওয়ার্ড</span>
+          <span class="area-tag">ফ্রিপোর্ট</span>
+          <span class="area-tag">কলসি দিঘীরপাড়</span>
+          <span class="area-tag">সমস্যা মাজার</span>
+          <span class="area-tag">মাঝপাড়া</span>
+          <span class="area-tag">কুমারী পুকুরপাড়</span>
+          <span class="area-tag">মাইলের মাথা</span>
+          <span class="area-tag">বাদামতলা</span>
+          <span class="area-tag">ব্যাংক কলোনি</span>
+          <span class="area-tag">লোহার পোল</span>
+          <span class="area-tag">হাসিনা হাট</span>
+          <span class="area-tag">মিস্ত্রি পুকুর পাড়</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="container two-col">
+      <div class="panel">
+        <h2 style="margin-bottom: 6px;">অভিযোগ ও সাপোর্ট টিকেট</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 14px;">
+          লাইন বা Wi-Fi সংক্রান্ত যেকোনো সমস্যায় ফর্ম পূরণ করে WhatsApp-এ টিকেট পাঠান।
+        </p>
+
+        <form id="complaintForm" onsubmit="submitComplaint(event)">
+          <div class="form-group">
+            <label for="compName">কাস্টমারের নাম</label>
+            <input type="text" id="compName" required placeholder="আপনার নাম লিখুন" />
+          </div>
+
+          <div class="form-group">
+            <label for="compPhone">মোবাইল নম্বর</label>
+            <input type="tel" id="compPhone" required placeholder="01XXXXXXXXX" />
+          </div>
+
+          <div class="form-group">
+            <label for="compArea">এলাকা</label>
+            <input type="text" id="compArea" required placeholder="যেমন: ফ্রিপোর্ট, মাঝপাড়া, ব্যাংক কলোনি..." />
+          </div>
+
+          <div class="form-group">
+            <label for="compIssue">সমস্যার বিবরণ</label>
+            <textarea id="compIssue" rows="3" required placeholder="আপনার সংযোগ বা Wi-Fi সমস্যার বিবরণ লিখুন"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">টিকেট তৈরি করে WhatsApp-এ পাঠান</button>
+        </form>
+
+        <div class="ticket-banner" id="ticketResult"></div>
+      </div>
+
+      <div class="panel">
+        <h2 style="margin-bottom: 6px;">RS চ্যাট</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">
+          প্যাকেজ, বিকাশ/নগদ নম্বর বা এলাকার নাম লিখে তথ্য জানুন।
+        </p>
+
+        <div class="chat-box" id="rsChatBox">
+          <div class="msg rs">
+            স্বাগতম! আমি RS। প্যাকেজ, বিকাশ/নগদ নম্বর বা এলাকার নাম লিখে জানতে পারেন।
+          </div>
+        </div>
+
+        <form class="chat-input-row" onsubmit="sendRsMessage(event)">
+          <input type="text" id="rsChatInput" placeholder="এখানে লিখুন (যেমন: 100Mbps, বিকাশ, মাঝপাড়া)..." required />
+          <button type="submit" class="btn btn-gold">পাঠান</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-backdrop" id="orderModal" onclick="backdropCloseModal(event)">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>নতুন সংযোগের অর্ডার</h3>
+        <button type="button" class="close-btn" onclick="closeOrderModal()" aria-label="বন্ধ করুন">✕</button>
+      </div>
+
+      <div class="selected-pkg-summary">
+        <div>
+          <small style="color: var(--text-muted); display: block;">নির্বাচিত প্যাকেজ</small>
+          <strong id="modalPkgName" style="font-size: 1.08rem; color: var(--gold-bright);">৫০ Mbps</strong>
+        </div>
+        <strong id="modalPkgPrice" style="font-size: 1.12rem;">৳৯৫০</strong>
+      </div>
+
+      <div class="pay-row">
+        <div>
+          <small>বিকাশ নম্বর</small>
+          <strong>01759887499</strong>
+        </div>
+        <button type="button" class="copy-btn" onclick="copyText('01759887499', 'বিকাশ নম্বর কপি হয়েছে')">কপি</button>
+      </div>
+
+      <div class="pay-row">
+        <div>
+          <small>নগদ নম্বর</small>
+          <strong>01869466643</strong>
+        </div>
+        <button type="button" class="copy-btn" onclick="copyText('01869466643', 'নগদ নম্বর কপি হয়েছে')">কপি</button>
+      </div>
+
+      <form id="orderForm" onsubmit="submitOrderToWhatsApp(event)">
+        <div class="form-group">
+          <label for="custName">কাস্টমারের নাম</label>
+          <input type="text" id="custName" required placeholder="পূর্ণ নাম লিখুন" />
+        </div>
+
+        <div class="form-group">
+          <label for="custMobile">কাস্টমারের মোবাইল নম্বর</label>
+          <input type="tel" id="custMobile" required placeholder="01XXXXXXXXX" />
+        </div>
+
+        <div class="form-group">
+          <label for="custId">কাস্টমার আইডি (যদি থাকে)</label>
+          <input type="text" id="custId" placeholder="যেমন: RS-1024" />
+        </div>
+
+        <div class="form-group">
+          <label for="trxId">ট্রানজেকশন আইডি (TrxID)</label>
+          <input type="text" id="trxId" placeholder="বিকাশ বা নগদ TrxID লিখুন" />
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width: 100%;">বিকাশ থেকে প্যাকেজ নিন (WhatsApp)</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong style="color: #ffffff; font-size: 1.02rem;">RS Online Internet Service Provider</strong>
+        <p>বন্দর এলাকা, চট্টগ্রাম ও ৩৮ নং ওয়ার্ড</p>
+      </div>
+      <div>
+        <p>হেল্পলাইন: <strong>01933562390</strong></p>
+        <p>টেলিফোন: <strong>09697203499</strong>, <strong>09658670149</strong></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toastBox">কপি হয়েছে</div>
+
+  <script>
+    const WHATSAPP_NUMBER = '8801759887499';
+    const COVERAGE_AREAS = [
+      'বন্দর এলাকা', 'চট্টগ্রাম', '৩৮ নং ওয়ার্ড', 'ফ্রিপোর্ট', 'কলসি দিঘীরপাড়',
+      'সমস্যা মাজার', 'মাঝপাড়া', 'কুমারী পুকুরপাড়', 'মাইলের মাথা', 'বাদামতলা',
+      'ব্যাংক কলোনি', 'লোহার পোল', 'হাসিনা হাট', 'মিস্ত্রি পুকুর পাড়'
+    ];
+
+    let currentPkg = { name: '৫০ Mbps', price: '৳৯৫০' };
+
+    function showToast(message) {
+      const toast = document.getElementById('toastBox');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function copyText(text, label) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(label)).catch(() => fallbackCopy(text, label));
+      } else {
+        fallbackCopy(text, label);
+      }
+    }
+
+    function fallbackCopy(text, label) {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      showToast(label);
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    function openOrderModal(pkgName, pkgPrice) {
+      currentPkg = { name: pkgName, price: pkgPrice };
+      document.getElementById('modalPkgName').textContent = pkgName;
+      document.getElementById('modalPkgPrice').textContent = pkgPrice;
+      document.getElementById('orderModal').classList.add('open');
+    }
+
+    function closeOrderModal() {
+      document.getElementById('orderModal').classList.remove('open');
+    }
+
+    function backdropCloseModal(event) {
+      if (event.target.id === 'orderModal') {
+        closeOrderModal();
+      }
+    }
+
+    function submitOrderToWhatsApp(event) {
+      event.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const mobile = document.getElementById('custMobile').value.trim();
+      const custId = document.getElementById('custId').value.trim() || 'নতুন গ্রাহক';
+      const trxId = document.getElementById('trxId').value.trim() || 'উল্লেখ করা হয়নি';
+
+      const message =
+        `নতুন প্যাকেজ অর্ডার (RS Online):\n` +
+        `• প্যাকেজ: ${currentPkg.name} (${currentPkg.price})\n` +
+        `• নাম: ${name}\n` +
+        `• মোবাইল: ${mobile}\n` +
+        `• কাস্টমার আইডি: ${custId}\n` +
+        `• ট্রানজেকশন আইডি: ${trxId}\n` +
+        `• বিকাশ নম্বর: 01759887499\n` +
+        `• নগদ নম্বর: 01869466643`;
+
+      const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank', 'noopener');
+      closeOrderModal();
+      document.getElementById('orderForm').reset();
+    }
+
+    function submitComplaint(event) {
+      event.preventDefault();
+      const ticket = 'RS-' + Math.floor(100000 + Math.random() * 900000);
+      const name = document.getElementById('compName').value.trim();
+      const phone = document.getElementById('compPhone').value.trim();
+      const area = document.getElementById('compArea').value.trim();
+      const issue = document.getElementById('compIssue').value.trim();
+
+      const banner = document.getElementById('ticketResult');
+      banner.style.display = 'block';
+      banner.innerHTML = `টিকেট তৈরি হয়েছে: <strong>${ticket}</strong> — WhatsApp-এ অভিযোগ পাঠানো হচ্ছে।`;
+
+      const message =
+        `অভিযোগ টিকেট: ${ticket}\n` +
+        `• নাম: ${name}\n` +
+        `• মোবাইল: ${phone}\n` +
+        `• এলাকা: ${area}\n` +
+        `• সমস্যা: ${issue}`;
+
+      const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank', 'noopener');
+      document.getElementById('complaintForm').reset();
+    }
+
+    function appendChatMessage(text, sender) {
+      const box = document.getElementById('rsChatBox');
+      const div = document.createElement('div');
+      div.className = `msg ${sender}`;
+      div.textContent = text;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function sendRsMessage(event) {
+      event.preventDefault();
+      const input = document.getElementById('rsChatInput');
+      const raw = input.value.trim();
+      if (!raw) return;
+
+      appendChatMessage(raw, 'user');
+      input.value = '';
+
+      const q = raw.toLowerCase();
+      let reply = 'প্যাকেজ (২০ থেকে 100Mbps), বিকাশ (01759887499), নগদ (01869466643) বা এলাকার নাম লিখে জানতে পারেন। সরাসরি কথা বলতে কল করুন: 01933562390।';
+
+      const matchedArea = COVERAGE_AREAS.find((a) => raw.includes(a));
+      if (matchedArea) {
+        reply = `হ্যাঁ, "${matchedArea}" এলাকায় আমাদের RS Online ফাইবার ও Wi-Fi সাপোর্ট রয়েছে। সংযোগ নিতে 01933562390 নম্বরে যোগাযোগ করুন।`;
+        const areaInput = document.getElementById('compArea');
+        if (areaInput && !areaInput.value.trim()) {
+          areaInput.value = matchedArea;
+        }
+      } else if (q.includes('বিকাশ') || q.includes('bkash') || q.includes('নগদ') || q.includes('nagad') || q.includes('পেমেন্ট')) {
+        reply = 'আমাদের পেমেন্ট নম্বর:\n• বিকাশ: 01759887499\n• নগদ: 01869466643';
+      } else if (q.includes('100') || q.includes('১০০') || q.includes('প্যাকেজ') || q.includes('স্পিড')) {
+        reply = 'প্যাকেজসমূহ:\n• ২০ Mbps — ৳৬০০\n• ৩০ Mbps — ৳৭০০\n• ৪০ Mbps — ৳৮০০\n• ৫০ Mbps — ৳৯৫০\n• ৬০ Mbps — ৳১০৫০\n• ৭০ Mbps — ৳১১৫০\n• 100Mbps — ৳১২৫০ (আনলিমিটেড ১ জিবি ডাটা ট্রান্সফার)';
+      } else if (q.includes('কল') || q.includes('নম্বর') || q.includes('হেল্পলাইন') || q.includes('টেলিফোন')) {
+        reply = 'যোগাযোগ নম্বর:\n• মোবাইল: 01933562390\n• টেলিফোন: 09697203499, 09658670149';
+      }
+
+      setTimeout(() => appendChatMessage(reply, 'rs'), 220);
+    }
+  </script>
+</body>
+</html>
